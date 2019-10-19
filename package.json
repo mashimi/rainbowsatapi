@@ -1,0 +1,14 @@
+{
+  "name": "rainbowsatapi",
+  "version": "0.1.0",
+  "description": "This project delivers XYZ positions for the RainbowSatAR project.",
+  "author": "Heitor Silva <heitor-silva@hotmail.com>",
+  "license": "GPL-3.0",
+  "private": false,
+  "scripts": {
+    "start": "fastify start server.js"
+  },
+  "dependencies": {
+    "fastify": "^2.10.0"
+  }
+}
