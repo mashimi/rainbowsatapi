@@ -234,6 +234,11 @@ safe-regex2@^2.0.0:
   dependencies:
     ret "~0.2.0"
 
+satellite.js@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/satellite.js/-/satellite.js-3.0.1.tgz#8eeda238624ea06405323e73f49603072d53a1eb"
+  integrity sha512-6oXEOHM3thTZvYh5OzEtXDuJGC9bBLVGVXA0KO1iuF1vlQP7TXHbxFalyVsHOfBWsZY6pfjjCiIAMnFG0sbmEA==
+
 secure-json-parse@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/secure-json-parse/-/secure-json-parse-1.0.0.tgz#fa32c6778166b783cf6315db967944e63f7747d0"

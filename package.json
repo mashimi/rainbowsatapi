@@ -9,6 +9,7 @@
     "start": "fastify start server.js"
   },
   "dependencies": {
-    "fastify": "^2.10.0"
+    "fastify": "^2.10.0",
+    "satellite.js": "^3.0.1"
   }
 }
