@@ -21,13 +21,11 @@ ENV LANG=en_US.UTF-8 \
     LC_IDENTIFICATION=en_US.UTF-8 \
     LC_ALL=en_US.UTF-8
 
-COPY package.json /rainbow/
+COPY package.json yarn.lock /rainbow/
 
 RUN apk add --update --no-cache autoconf automake build-base ca-certificates gcc git openssh openssl tzdata vim yarn && \
     cp /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
-    echo "Europe/Berlin" > /etc/timezone && \
-    yarn config set prefix ~/.yarn && \
-    yarn global add fastify fastify-cli
+    echo "Europe/Berlin" > /etc/timezone
 
 EXPOSE 3000
 
