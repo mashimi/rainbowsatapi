@@ -28,16 +28,23 @@ async function routes (fastify, options) {
       .then(json => {
         const tle = json.tle.split('\r\n');
         const satrec = satellite.twoline2satrec(tle[0], tle[1]);
-        const positionAndVelocity = satellite.propagate(satrec, new Date());
-        const positionEci = positionAndVelocity.position;
+        const date = new Date();
+        let positionAndVelocity, positionEci;
 
-        coordinates.push(
-          {
-            x: positionEci.x,
-            y: positionEci.y,
-            z: positionEci.z
-          }
-        );
+        for(let i = 0; i < 3600; i += 1) {
+          positionAndVelocity = satellite.propagate(satrec, date);
+          positionEci = positionAndVelocity.position;
+
+          coordinates.push(
+            {
+              x: positionEci.x,
+              y: positionEci.y,
+              z: positionEci.z
+            }
+          );
+
+          date.setMinutes(date.getMinutes() + 1);
+        }
       });
 
     return { coordinates };
