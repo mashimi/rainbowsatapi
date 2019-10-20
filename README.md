@@ -10,21 +10,32 @@ Transform this into a GraphQL source, to provide a friendly set of informations 
 
 First important thing is to have a API KEY from [N2YO](https://www.n2yo.com).
 
-### Docker
+Then, you need to install [nodenv](https://github.com/nodenv/nodenv) or [nvm](https://github.com/nvm-sh/nvm) or [Docker](https://www.docker.com/get-started).
 
-If you're running for the first time, follow these steps:
+> After Docker the installation, we recommend going to preferences, and setting the number of CPUs to the maximum capacity of your computer (to improve performance).
+
+### nodenv or nvm
+
+```bash
+nvm install --lts
+curl -o- -L https://yarnpkg.com/install.sh | bash
+yarn global add fastify-cli
+yarn install
+```
+
+### Docker
 
 ```bash
 docker build -f Dockerfile -t rainbowsatapi . # builds the image
 docker run -it --rm -v $(pwd):/rainbow:delegated -w /rainbow -p 3000:3000 -e API_KEY=my_key --name RainbowSatAPI rainbowsatapi ash # enters the container
 yarn install # install dependencies
-yarn start # runs the project
+yarn dev # runs the project in development mode
 ```
 
 Commands:
 
 ```bash
-docker run -it --rm -v $(pwd):/rainbow:delegated -w /rainbow -p 3000:3000 -e API_KEY=my_key --name RainbowSatAPI rainbowsatapi # runs the project (if you followed above steps at least once)
+docker run -it --rm -v $(pwd):/rainbow:delegated -w /rainbow -p 3000:3000 -e API_KEY=my_key --name RainbowSatAPI rainbowsatapi yarn dev # runs the project in development mode (if you followed above steps at least once)
 docker exec -it RainbowSatAPI ash # enters the container
 docker kill RainbowSatAPI # kills the container
 ```

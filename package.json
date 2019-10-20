@@ -6,7 +6,8 @@
   "license": "GPL-3.0",
   "private": false,
   "scripts": {
-    "start": "fastify start server.js --watch"
+    "dev": "fastify start server.js --watch --debug --log-level info --host 0.0.0.0 --port 3000",
+    "start": "fastify start server.js --host 0.0.0.0 --port 3000"
   },
   "dependencies": {
     "fastify": "^2.10.0",

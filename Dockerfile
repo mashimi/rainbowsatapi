@@ -32,4 +32,4 @@ RUN apk add --update --no-cache autoconf automake build-base ca-certificates gcc
 
 EXPOSE 3000
 
-CMD ["yarn", "start", "--host", "0.0.0.0", "--port", "3000"]
+CMD ["yarn", "start"]
