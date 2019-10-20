@@ -32,12 +32,19 @@ yarn install # install dependencies
 yarn dev # runs the project in development mode
 ```
 
-Commands:
+#### Commands
 
 ```bash
-docker run -it --rm -v $(pwd):/rainbow:delegated -w /rainbow -p 3000:3000 -e API_KEY=my_key --name RainbowSatAPI rainbowsatapi yarn dev # runs the project in development mode (if you followed above steps at least once)
+docker run -it --rm -v $(pwd):/rainbow:delegated -w /rainbow -p 3000:3000 -e API_KEY=my_key --name RainbowSatAPI rainbowsatapi # runs the project in production mode (if you followed above section steps at least once)
+docker run -it --rm -v $(pwd):/rainbow:delegated -w /rainbow -p 3000:3000 -e API_KEY=my_key --name RainbowSatAPI rainbowsatapi yarn dev # runs the project in development mode (if you followed above section steps at least once)
 docker exec -it RainbowSatAPI ash # enters the container
 docker kill RainbowSatAPI # kills the container
+```
+
+### Styleguide
+
+```bash
+yarn lint # runs ESLint
 ```
 
 ## Routes
