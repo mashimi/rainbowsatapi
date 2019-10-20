@@ -40,6 +40,20 @@ docker exec -it RainbowSatAPI ash # enters the container
 docker kill RainbowSatAPI # kills the container
 ```
 
+## Routes
+
+### /
+
+This route has nothing
+
+### /:noradID
+
+This route delivers an array of objects.
+
+Each object will have a `coordinates` and `velocities` key, with X, Y, Z positions in them.
+
+> You can check the NORAD IDs here: [https://www.n2yo.com/database/](https://www.n2yo.com/database/)
+
 ## License
 
 RainbowSatAPI is licensed under [GPL-3.0](./LICENSE).

@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 const satellite = require('satellite.js');
 
 async function routes (fastify, options) {
-  fastify.get('/', async (request, reply) => {
+  fastify.get('/:satelliteId', async (request, reply) => {
     const reqData = {
       method: 'GET',
       headers: {
@@ -15,7 +15,7 @@ async function routes (fastify, options) {
       cache: 'default'
     };
 
-    const id = 25544; // ISS
+    const id = request.params.satelliteId;
 
     const url = `https://www.n2yo.com/rest/v1/satellite/tle/${id}&apiKey=${process.env.API_KEY}`;
 

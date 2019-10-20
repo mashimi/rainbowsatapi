@@ -1,6 +1,6 @@
 {
   "name": "rainbowsatapi",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "This project delivers XYZ positions and velocities for the RainbowSatAR project.",
   "author": "Heitor Silva <heitor-silva@hotmail.com>",
   "license": "GPL-3.0",
