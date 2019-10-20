@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
 const fastify = require('fastify')({
-  logger: { level: 'debug' }
+  logger: { level: 'trace' }
 })
 
 const satellite = require('satellite.js');
@@ -22,18 +22,20 @@ async function routes (fastify, options) {
 
     const url = `https://www.n2yo.com/rest/v1/satellite/tle/${id}&apiKey=${process.env.API_KEY}`;
 
-    let coordinates = [];
+    const coordinates = [];
+    const velocities = [];
 
     await fetch(url, reqData).then(response => response.json())
       .then(json => {
         const tle = json.tle.split('\r\n');
         const satrec = satellite.twoline2satrec(tle[0], tle[1]);
         const date = new Date();
-        let positionAndVelocity, positionEci;
+        let positionAndVelocity, positionEci, velocityEci;
 
         for(let i = 0; i < 3600; i += 1) {
           positionAndVelocity = satellite.propagate(satrec, date);
           positionEci = positionAndVelocity.position;
+          velocityEci = positionAndVelocity.velocity;
 
           coordinates.push(
             {
@@ -43,11 +45,15 @@ async function routes (fastify, options) {
             }
           );
 
+          velocities.push(
+            velocityEci
+          );
+
           date.setMinutes(date.getMinutes() + 1);
         }
       });
 
-    return { coordinates };
+    return { coordinates, velocities };
   })
 }
 module.exports = routes;
